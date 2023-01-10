@@ -10,7 +10,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
 
-  useEffect(() => {
+  useEffect((setExercises) => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
 
@@ -27,9 +27,9 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   }, [bodyPart]);
 
   // Pagination
-const indexOfLastExercise = currentPage * exercisesPerPage;
-const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
+  const indexOfLastExercise = currentPage * exercisesPerPage;
+  const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
+  const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
 
   const paginate = (event, value) => {
     setCurrentPage(value);
@@ -65,4 +65,3 @@ const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExerci
 };
 
 export default Exercises;
-
